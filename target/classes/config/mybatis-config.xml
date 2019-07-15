@@ -9,6 +9,6 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	<typeAliases>
-		<typeAlias alias="" type=""/>
+		<typeAlias alias="userBoardVO" type="userBoard.domain.UserBoardVO"/>
 	</typeAliases>
 </configuration>
