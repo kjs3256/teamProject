@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mateDAO">
+	<select id="list" resultType="mateVO">
+			SELECT * FROM MATE_BOARD
+			ORDER BY seq
+	</select>
+	
+	<select id="select" parameterType="int" resultType="mateVO">
+		SELECT * FROM
+		MATE_BOARD WHERE seq = #{seq}
+	</select>
+	
+	<insert id="insert" parameterType="mateVO">
+		INSERT INTO MATE_BOARD
+		(seq, title, nickname, regDate)
+		VALUES
+		(MATE_BOARD_SEQ.nextval, #{title}, #{nickname}, SYSDATE)
+		<selectKey keyProperty="seq" resultType="Integer">
+			SELECT NVL(MAX(seq)) FROM MATE_BOARD
+		</selectKey> 
+	</insert>
+	
+	<delete id="delete" parameterType="mateVO">
+		DELETE FROM MATE_BOARD WHERE seq = #{seq}
+		AND password = #{password}
+	</delete>
+	
+</mapper>

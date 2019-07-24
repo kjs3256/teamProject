@@ -33,12 +33,23 @@
 		 value="classpath:config/mybatis-config.xml"/>
 		<property name="mapperLocations">
 			<list>
+				<value>classpath:config/sqlmap-mateBoard.xml</value>
+				<!--  
 				<value>classpath:config/sqlmap-(name).xml</value>
+				-->
 			</list>
 		</property>
 	</bean>
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
 		<constructor-arg ref="sqlSessionFactory"/>	
+	</bean>
+	
+	<bean id="mateDao" class="mate.dao.MateDaoMybatis">
+		<constructor-arg ref="sqlSessionTemplate"></constructor-arg>
+	</bean>
+	
+	<bean id="mateServiceImpl" class="mate.service.MateServiceImpl">
+		<property name="mateDao" ref="mateDao"/>
 	</bean>
 </beans>
