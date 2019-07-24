@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberDao">
+	
+	<select id="selectById" parameterType="String" resultType="memberVO">
+		SELECT * FROM member WHERE id=#{id}
+	</select>
+	<select id="selectByNick" parameterType="String" resultType="memberVO">
+		SELECT * FROM member WHERE nickname=#{nickname}
+	</select>
+	<insert id="insert" parameterType="memberVO">
+		INSERT INTO member 
+		VALUES (#{id}, #{password}, #{nickname}, #{regdate}, #{phone})
+	</insert>
+	<update id="update" parameterType="memberVO">
+		UPDATE member SET password = #{password} 
+		WHERE id = #{id}
+	</update>
+	<delete id="delete" parameterType="memberVO">
+		DELETE FROM member WHERE id = #{id}
+	</delete>
+</mapper>

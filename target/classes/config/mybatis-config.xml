@@ -8,11 +8,11 @@
 		<setting name="useGeneratedKeys" value="false"/>
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	<typeAliases>
-		<!-- 
-		 <typeAlias alias="userBoardVO" type="userBoard.domain.UserBoardVO"/>		
-		 -->
-		
+	<typeAliases>	
 		<typeAlias alias="mateVO" type="mate.domain.MateVO"/>
+		<typeAlias alias="userBoardVO" type="userBoard.domain.UserBoardVO"/>
+		<typeAlias alias="memberVO" type="member.domain.MemberVO"/>
+		<typeAlias alias="RecoVO" type="reco.domain.RecoVO"/>
+		<typeAlias alias="CommentVO" type="comment.domain.CommentVO"/>
 	</typeAliases>
 </configuration>

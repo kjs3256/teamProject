@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="recoDao">
+	
+	<select id="reco_check" parameterType="recoVO" resultType="recoVO">
+		SELECT * FROM recommand WHERE id=#{id} AND seq=#{seq}
+	</select>
+	
+	<insert id="reco_update" parameterType="recoVO">
+		INSERT INTO recommand
+		VALUES (#{id}, #{seq})
+	</insert>
+</mapper>

@@ -34,9 +34,10 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath:config/sqlmap-mateBoard.xml</value>
-				<!--  
-				<value>classpath:config/sqlmap-(name).xml</value>
-				-->
+				<value>classpath:config/sqlmap-member.xml</value>
+				<value>classpath:config/sqlmap-userBoard.xml</value>
+				<value>classpath:config/sqlmap-reco.xml</value>
+				<value>classpath:config/sqlmap-comment.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -44,6 +45,7 @@
 		destroy-method="clearCache">
 		<constructor-arg ref="sqlSessionFactory"/>	
 	</bean>
+<<<<<<< HEAD
 	
 	<bean id="mateDao" class="mate.dao.MateDaoMybatis">
 		<constructor-arg ref="sqlSessionTemplate"></constructor-arg>
@@ -51,5 +53,33 @@
 	
 	<bean id="mateServiceImpl" class="mate.service.MateServiceImpl">
 		<property name="mateDao" ref="mateDao"/>
+=======
+	<bean id="memberDao" class="member.dao.MemberDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
+	<bean id="memberSvcImpl" class="member.service.MemberServiceImpl">
+	</bean>
+	<bean id="authService" class="member.service.AuthService">
+		<property name="memberDao" ref="memberDao"/>
+	</bean>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000"/>
+		<property name="maxInMemorySize" value="100000000"/>
+	</bean>
+	<bean id="userBoardDao" class="userBoard.dao.UserBoardDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
+	<bean id="userBoardSvcImpl" class="userBoard.service.UserBoardServiceImpl">
+	</bean>
+	<bean id="recoDao" class="reco.dao.RecoDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
+	<bean id="recoSvcImpl" class="reco.service.RecoServiceImpl">
+	</bean>
+	<bean id="commentDao" class="comment.dao.CommentDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
+	<bean id="commentSvcImpl" class="comment.service.CommentServiceImpl">
+>>>>>>> 516cdc3e704e11452653614a20af87075ee29a6e
 	</bean>
 </beans>

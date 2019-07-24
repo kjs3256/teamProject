@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="userBoard">
-	
+<mapper namespace="userBoardDao">
+	<select id="list" parameterType="map" resultType="userBoardVO">
+		SELECT * FROM (select rownum rnum, seq, title, nickname, 
+		content, regdate, reco, readcount FROM (SELECT * FROM userboard
+		ORDER BY seq desc))<![CDATA[ WHERE rnum>=#{start} AND rnum<=#{end}]]>
+	</select>
+	<select id="count" resultType="int">
+		select count(*) from userboard
+	</select>
+	<select id="select" parameterType="int" resultType="userBoardVO">
+		SELECT * FROM userboard 
+		WHERE seq = #{seq}
+	</select>
+	<select id="selectKeyword" parameterType="String" resultType="userBoardVO">
+		SELECT * FROM userboard 
+		WHERE title LIKE '%'||#{keyword}||'%' OR nickname LIKE '%'||#{keyword}||'%'
+	</select>
+	<select id="orderByLike" resultType="userBoardVO">
+		SELECT * FROM userboard 
+		ORDER BY reco desc
+	</select>
+	<select id="selectNotice" parameterType="String" resultType="userBoardVO">
+		SELECT * FROM userboard
+		WHERE nickname = #{nickname} 
+		ORDER BY seq desc
+	</select>
+	<insert id="insert" parameterType="userBoardVO">
+		INSERT INTO userboard(seq, title, nickname, content) 
+		values(USERBOARD_SEQ.nextval, #{title}, #{nickname}, #{content})
+		<selectKey keyProperty="seq" resultType="Integer">
+			SELECT NVL(MAX(seq), 0) FROM userboard
+		</selectKey>
+	</insert>
+	<update id="updateCount" parameterType="int">
+		UPDATE userboard SET readcount=readcount+1 WHERE seq =#{seq}
+	</update>
+	<update id="update" parameterType="userBoardVO">
+		UPDATE userboard SET title=#{title}, content=#{content} where seq=#{seq}
+	</update>
+	<update id="updateLike" parameterType="int">
+		UPDATE userboard SET reco=reco+1 where seq=#{seq}
+	</update>
+	<delete id="delete" parameterType="userBoardVO">
+		DELETE FROM userboard WHERE seq=#{seq}
+	</delete>
+>>>>>>> 516cdc3e704e11452653614a20af87075ee29a6e
 </mapper>
