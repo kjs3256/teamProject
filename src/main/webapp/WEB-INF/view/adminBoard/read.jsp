@@ -63,11 +63,11 @@
 						<small>관리자 | ${sdf.format(adminBoardVO.regdate) } | 조회 :
 							${adminBoardVO.readcount } </small>
 					</h4>
-					<table>
+					<table class="table  text-left">
 						<tr>
 							<td style="font-size: 15px;">
 								<div
-									style="width: 2000%; height: 400px; float: top; text-align: center;">
+									style="width: 80%; height:100%; float: top;">
 									<br>
 									<br>
 									<br> ${adminBoardVO.content}<br> <br>
@@ -75,15 +75,15 @@
 							</td>
 						</tr>
 					</table>
-				</div>
+				<div style="clear:both"></div>
 				<div style="text-align: center;">
 					<a href="<c:url value='/adminBoard/list'/>" class="btn btn-primary">목록</a>
 					<c:if test="${authInfo.getId()=='admin'}">
 						<a href="<c:url value='/adminBoard/edit'/>/${adminBoardVO.seq}"
 							class="btn btn-warning">수정</a>
-						<button class="btn btn-danger"
-							onClick="return confirmDelete(${adminBoardVO.seq})">삭제</button>
+						<button class="btn btn-danger" onClick="return confirmDelete(${adminBoardVO.seq})">삭제</button>
 					</c:if>
+				</div>
 				</div>
 			</div>
 		</div>

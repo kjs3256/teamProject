@@ -16,7 +16,6 @@
 </head>
 <body>
 	<header>
-		<div class="image"></div>
 		<div class="navbar-inverse">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -33,11 +32,9 @@
 			<div class="navbar-collapse collapse" id="navbar-collapsible">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="<c:url value='/adminBoard/list'/>">핫 플레이스</a></li>
+					<li><a href="<c:url value='/adminBoard/list'/>"><span style="font-size:15pt; color:white;">핫 플레이스</span></a></li>
 					<li><a href="<c:url value='/userBoard/list'/>"><span style="font-size:15pt; color:white;">숨은 맛집 추천</span></a></li>
 					<li><a href="#"><span style="font-size:15pt; color:white;">여행 메이트</span></a></li>
-					<li><a href="<c:url value='/userBoard/list'/>">숨은 맛집 추천</a></li>
-					<li><a href="#">여행 메이트</a></li>
 				</ul>
 
 				<div class="navbar-right btn-group">

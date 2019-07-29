@@ -33,6 +33,7 @@ public class MainController {
 		model.addAttribute("userBoardList", userBoardService.mainList());
 		return "main";
 	}
+
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public String search(@RequestParam("keyword") String keyword, Model model) {
 		List<UserBoardVO> uBoardSearch = null;
