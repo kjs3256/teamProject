@@ -28,6 +28,14 @@ public class UserBoardDaoImpl implements UserBoardDao {
 		map.put("end", end);
 		return sqlSessionTemplate.selectList("userBoardDao.list",map);
 	}
+	@Override
+	public List<UserBoardVO> list(Integer start, Integer end, String loc) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("loc", loc);
+		return sqlSessionTemplate.selectList("userBoardDao.category",map);
+	}
 
 	@Override
 	public List<UserBoardVO> selectByKey(String keyword) {
@@ -73,6 +81,10 @@ public class UserBoardDaoImpl implements UserBoardDao {
 	@Override
 	public List<UserBoardVO> selectNotice(String nickname) {
 		return sqlSessionTemplate.selectList("selectNotice", nickname);
+	}
+	@Override
+	public List<UserBoardVO> selectMain() {
+		return sqlSessionTemplate.selectList("mainList");
 	}
 
 }

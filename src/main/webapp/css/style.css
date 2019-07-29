@@ -1,0 +1,7 @@
+.image{
+		width:100%;
+		height:250px;
+		background-image:url("../images/topimage.jpg");
+		background-repeat:no-repeat;
+		background-size:cover;
+}

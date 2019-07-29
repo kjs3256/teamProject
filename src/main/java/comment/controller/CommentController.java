@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import comment.domain.CommentVO;
 import comment.service.CommentService;
 import member.service.AuthInfo;
+import userBoard.domain.UserBoardVO;
+import userBoard.service.UserBoardService;
 
 @Controller
 @RequestMapping("/comment/*")
@@ -25,7 +27,7 @@ public class CommentController {
 		this.commentService = commentService;
 	}
 	@RequestMapping(value="add", method=RequestMethod.POST)
-	public String add(CommentVO commentVO, @RequestParam("seq") int seq, HttpSession session){
+	public String add(CommentVO commentVO, @RequestParam("seq") int seq, HttpSession session, Model model){
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		commentVO.setSeq(seq);
 		commentVO.setNickname(authInfo.getNickname());

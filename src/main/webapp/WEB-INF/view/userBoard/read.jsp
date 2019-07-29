@@ -45,11 +45,11 @@
 			</h4>
 			<hr />
 			<div class=container>
-				<div class="row">
+				<div class="row" style="margin-bottom:50px;">
 					<table class="table text-left">
 						<tr>
 							<td style="font-size: 15px;">
-								<div style="width: 80%; height: 200px; float:top;">
+								<div style="width: 80%; height: 100%; float:top;">
 									${userBoardVO.content}<br><br>
 								</div>
 							</td>

@@ -19,5 +19,6 @@ public class WriteValidator implements Validator{
 		// errors : 검사 결과 에러코드를 저장하는 객체
 		
 		ValidationUtils.rejectIfEmpty(errors, "title", "required");
+		ValidationUtils.rejectIfEmpty(errors, "loc", "required");
 	}	
 }

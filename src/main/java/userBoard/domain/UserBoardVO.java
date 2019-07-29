@@ -12,7 +12,21 @@ public class UserBoardVO {
 	private String longtitude;
 	private int reco;
 	private int readcount;
+	private int commcount;
+	private String loc;
 
+	public String getLoc() {
+		return loc;
+	}
+	public void setLoc(String loc) {
+		this.loc = loc;
+	}
+	public int getCommcount() {
+		return commcount;
+	}
+	public void setCommcount(int commcount) {
+		this.commcount = commcount;
+	}
 	public int getSeq() {
 		return seq;
 	}

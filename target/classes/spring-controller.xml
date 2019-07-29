@@ -13,7 +13,7 @@
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/userBoard/**"/>
-			<mvc:exclude-mapping path="/userBoard/list"/>
+			<mvc:exclude-mapping path="/userBoard/list/**"/>
 			<mvc:exclude-mapping path="/userBoard/read/**"/>
 			<bean class="interceptor.AuthCheckInterceptor"/>
 		</mvc:interceptor>
@@ -33,7 +33,9 @@
 	<bean class="member.controller.ManagerController">
 		<property name="memberService" ref="memberSvcImpl"/>
 	</bean>
-	<bean class="main.controller.MainController"></bean>
+	<bean class="main.controller.MainController">
+		<property name="userBoardService" ref="userBoardSvcImpl"/>
+	</bean>
 	
 	<bean class="userBoard.controller.UserBoardController">
 		<property name="userBoardService" ref="userBoardSvcImpl"/>

@@ -31,9 +31,8 @@ public class UserBoardController {
 	public void setUserBoardService(UserBoardService userBoardService){
 		this.userBoardService = userBoardService;
 	}
-
 	@RequestMapping("list")
-	public String list(HttpServletRequest request, Model model){
+	public String list(UserBoardVO userBoardVO, HttpServletRequest request, Model model){
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) {
 			pageNum = "1";
@@ -60,6 +59,48 @@ public class UserBoardController {
 		}
 		number = count - (currentPage - 1) * pageSize; //글 목록에 표시할 글 번호
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH:mm");
+		
+		model.addAttribute("sdf",sdf);
+		model.addAttribute("userBoardList", userBoardList);
+		model.addAttribute("noticeBoardList", noticeBoardList);
+		model.addAttribute("likeBoardList", likeBoardList);
+		model.addAttribute("number", number);
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("pageSize",pageSize);
+		model.addAttribute("count", count);
+		model.addAttribute("startRow", startRow);
+		model.addAttribute("endRow", endRow);
+		return "userBoard/userBoard";
+	}
+	@RequestMapping("list/loc")
+	public String list(UserBoardVO userBoardVO, HttpServletRequest request, Model model, @RequestParam("loc") String loc){
+		String pageNum = request.getParameter("pageNum");
+		if(pageNum == null) {
+			pageNum = "1";
+		}
+		int pageSize = 10; //한 페이지 당 글의 갯수
+		int currentPage = Integer.parseInt(pageNum);
+		//페이지의 시작 글 번호
+		
+		int startRow = (currentPage - 1) * pageSize + 1;
+		int endRow = currentPage * pageSize; // 한 페이지의 마지막 글 번호
+		int count = userBoardService.count();
+		int number = 0;
+		List<UserBoardVO> userBoardList = null;
+		List<UserBoardVO> noticeBoardList = null;
+		List<UserBoardVO> likeBoardList = null;
+		if(count>0) {			
+			userBoardList = userBoardService.list(startRow, endRow, loc);
+			noticeBoardList = userBoardService.notice("관리자");
+			likeBoardList = userBoardService.orderByLike();
+		}else {
+			userBoardList = Collections.emptyList();
+			noticeBoardList = Collections.emptyList();
+			likeBoardList = Collections.emptyList();
+		}
+		number = count - (currentPage - 1) * pageSize; //글 목록에 표시할 글 번호
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH:mm");
+		
 		model.addAttribute("sdf",sdf);
 		model.addAttribute("userBoardList", userBoardList);
 		model.addAttribute("noticeBoardList", noticeBoardList);
@@ -87,7 +128,7 @@ public class UserBoardController {
 
 	@RequestMapping(value="write", method=RequestMethod.GET)
 	public String write(Model model) {
-		model.addAttribute("formData",new UserBoardVO());
+		model.addAttribute("formData",new UserBoardVO());	
 		return "userBoard/write";
 	}
 

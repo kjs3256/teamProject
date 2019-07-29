@@ -11,6 +11,8 @@
 <!-- 스타일시트 -->
 <link href="${pageContext.request.contextPath }/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/css/style.css"
+	rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- include summernote css/js -->
@@ -38,6 +40,33 @@
 						</tr>
 					</thead>
 					<tbody>
+						<tr>
+							<td>
+								<form:select path="loc" class="select-arrow-image">
+									<option selected>지역</option>
+									<form:option value="남구">남구</form:option>
+									<form:option value="부산진구">부산진구</form:option>
+									<form:option value="해운대구">해운대구</form:option>
+									<form:option value="수영구">수영구</form:option>
+									<form:option value="동구">동구</form:option>
+									<form:option value="서구">서구</form:option>
+									<form:option value="북구">북구</form:option>
+									<form:option value="사하구">사하구</form:option>
+									<form:option value="사상구">사상구</form:option>
+									<form:option value="동래구">동래구</form:option>
+									<form:option value="연제구">연제구</form:option>
+									<form:option value="금정구">금정구</form:option>
+									<form:option value="중구">중구</form:option>
+									<form:option value="영도구">영도구</form:option>
+									<form:option value="강서구">강서구</form:option>
+									<form:option value="기장군">기장군</form:option>
+									<c:if test="${authInfo.id.equals('admin') }">
+										<form:option value="공지">공지</form:option>
+									</c:if>
+								</form:select>
+								<small id="error"><form:errors path="loc"/></small>
+							</td>
+						</tr>
 						<tr>
 							<td>
 								<form:input class="form-control" placeholder="제목" path="title" /><br>

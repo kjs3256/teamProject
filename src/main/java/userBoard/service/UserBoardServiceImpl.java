@@ -16,6 +16,10 @@ public class UserBoardServiceImpl implements UserBoardService {
 	public List<UserBoardVO> list(int start, int end) {
 		return userBoardDao.list(start, end);
 	}
+	@Override
+	public List<UserBoardVO> list(Integer start, Integer end, String loc) {
+		return userBoardDao.list(start, end, loc);
+	}
 
 	@Override
 	public List<UserBoardVO> search(String keyword) {
@@ -60,6 +64,11 @@ public class UserBoardServiceImpl implements UserBoardService {
 	@Override
 	public List<UserBoardVO> notice(String nickname) {
 		return userBoardDao.selectNotice(nickname);
+	}
+
+	@Override
+	public List<UserBoardVO> mainList() {
+		return userBoardDao.selectMain();
 	}
 
 }

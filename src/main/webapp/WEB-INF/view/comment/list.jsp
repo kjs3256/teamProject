@@ -62,7 +62,7 @@ function commentDelete(cseq){
 							</tr>
 							<tr>
 								<td colspan="3"><input type="button"
-									class="btn btn-primary" value="댓글 달기" onClick="commentCheck()"></td>
+									class="btn btn-success" value="댓글 달기" onClick="commentCheck()"></td>
 							</tr>
 						</table>
 					</div>

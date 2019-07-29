@@ -6,9 +6,11 @@ import userBoard.domain.UserBoardVO;
 
 public interface UserBoardService {
 	public abstract List<UserBoardVO> list(int start, int end);
+	public abstract List<UserBoardVO> list(Integer start, Integer end, String loc);
 	public abstract List<UserBoardVO> search(String keyword);
 	public abstract List<UserBoardVO> orderByLike();
 	public abstract List<UserBoardVO> notice(String nickname);
+	public abstract List<UserBoardVO> mainList();
 	public abstract int count();
 	public abstract void write(UserBoardVO userBoardVO);
 	public abstract UserBoardVO read(int seq);

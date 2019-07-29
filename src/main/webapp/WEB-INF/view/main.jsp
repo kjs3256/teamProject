@@ -18,25 +18,94 @@
     $("#header").load("${pageContext.request.contextPath }/header")
     });
 </script>
+<style>
+	a:link { color: #151515; text-decoration: none;}
+	a:visited { color: black; text-decoration: none;}
+	a:hover { color: blue; text-decoration: none;}
+</style>
 </head>
 <body>
 	<div id="header"></div>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-6" style="margin-top:30px;">
 				<div class="text-center">
 					<h2>HOT PLACE</h2>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-6" style="margin-top:30px;">
 				<div class="text-center">
-					<h2>숨은 맛집</h2>
+					<table class="table table-striped text-center" style="border:1px solid #dddddd">
+						<thead>
+							<tr>
+								<th colspan="4">
+									<h4><strong>숨은 맛집 추천</strong></h4>
+								</th>
+								<th colspan="1" style="vertical-align:middle; text-align:center;">
+									<a href="<c:url value='/userBoard/list'/>" role="button">
+									<span class="glyphicon glyphicon-plus"></span></a>
+								</th>
+							</tr>
+							<tr>
+								<th style="background-color:#eeeeee; width:40%; text-align:center;">제목</th>
+								<th style="background-color:#eeeeee; text-align:center;">작성자</th>
+								<th style="background-color:#eeeeee; text-align:center;">작성일</th>
+								<th style="background-color:#eeeeee; text-align:center;">조회</th>
+								<th style="background-color:#eeeeee; text-align:center;">추천</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="board" items="${userBoardList}" begin="0" end="4">
+								<tr>
+									<td style="text-align:center;">
+										<a href= "<c:url value='/userBoard/read/${board.seq }'/>">
+										${board.title}</a>&nbsp;&nbsp;<small style="color:#61210B;"><b>[ ${board.commcount } ]</b></small>
+									</td>
+									<td>${board.nickname }</td>
+									<td>${sdf.format(board.regdate) }</td>
+									<td>${board.readcount }</td>
+									<td>${board.reco }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
-			</div>
-			<div class="col-md-4">
 				<div class="text-center">
-					<h2>여행 메이트</h2>
+					<table class="table table-striped text-center" style="border:1px solid #dddddd">
+						<thead>
+							<tr>
+								<th colspan="4">
+									<h4><strong>여행 메이트</strong></h4>
+								</th>
+								<th colspan="1" style="vertical-align:middle; text-align:center;">
+									<a href="<c:url value='/userBoard/list'/>" role="button">
+									<span class="glyphicon glyphicon-plus"></span></a>
+								</th>
+							</tr>
+							<tr>
+								<th style="background-color:#eeeeee; width:40%; text-align:center;">제목</th>
+								<th style="background-color:#eeeeee; text-align:center;">작성자</th>
+								<th style="background-color:#eeeeee; text-align:center;">작성일</th>
+								<th style="background-color:#eeeeee; text-align:center;">조회</th>
+								<th style="background-color:#eeeeee; text-align:center;">추천</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="board" items="${userBoardList}" begin="0" end="4">
+								<tr>
+									<td style="text-align:center;">
+										<a href= "<c:url value='/userBoard/read/${board.seq }'/>">
+										${board.title}</a>
+									</td>
+									<td>${board.nickname }</td>
+									<td>${sdf.format(board.regdate) }</td>
+									<td>${board.readcount }</td>
+									<td>${board.reco }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
