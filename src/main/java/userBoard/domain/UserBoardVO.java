@@ -12,7 +12,14 @@ public class UserBoardVO {
 	private String longtitude;
 	private int reco;
 	private int readcount;
+	private int commcount;
 
+	public int getCommcount() {
+		return commcount;
+	}
+	public void setCommcount(int commcount) {
+		this.commcount = commcount;
+	}
 	public int getSeq() {
 		return seq;
 	}

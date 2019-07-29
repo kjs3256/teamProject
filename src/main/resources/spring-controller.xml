@@ -45,4 +45,7 @@
 	<bean class="comment.controller.CommentController">
 		<property name="commentService" ref="commentSvcImpl"/>
 	</bean>
+	<bean class="adminBoard.controller.AdminBoardController">
+	<property name="adminBoardService" ref="adminBoardSvcImpl"/>
+	</bean>
 </beans>

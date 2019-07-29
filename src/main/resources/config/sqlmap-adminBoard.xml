@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminBoardDao">
+	<select id="list" parameterType="map" resultType="adminBoardVO">
+		SELECT * FROM (select rownum rnum, seq, title,  
+		content, regdate, filename, readcount, ischeck, schedule1, schedule2 FROM (SELECT * FROM ADMINBOARD
+		ORDER BY seq desc))<![CDATA[ WHERE rnum>=#{start} AND rnum<=#{end}]]>
+	</select>
+	<select id="selectKeyword" parameterType="String" resultType="adminBoardVO">
+		SELECT * FROM ADMINBOARD 
+		WHERE title LIKE '%'||#{keyword}||'%' 
+	</select>
+	<select id="selectIscheck" parameterType="int" resultType="adminBoardVO">
+		SELECT * FROM ADMINBOARD
+		WHERE ischeck =#{ischeck}
+	</select>
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM ADMINBOARD
+	</select>
+	<insert id="insert" parameterType="adminBoardVO">
+		INSERT INTO ADMINBOARD(seq, title, content, regdate, filename, ischeck, schedule1, schedule2) 
+		values(ADMINBOARD_SEQ.nextval, #{title}, #{content}, SYSDATE, #{filename}, #{ischeck}, #{schedule1}, #{schedule2})
+		<selectKey keyProperty="seq" resultType="Integer">
+			SELECT NVL(MAX(seq), 0) FROM ADMINBOARD 
+		</selectKey>
+	</insert>
+	<select id="select" parameterType="int" resultType="adminBoardVO">
+		SELECT * FROM ADMINBOARD 
+		WHERE seq = #{seq}
+	</select>
+	<update id="updateCount" parameterType="int">
+		UPDATE ADMINBOARD SET readcount=readcount+1 WHERE seq =#{seq}
+	</update>
+	<update id="update" parameterType="adminBoardVO">
+		UPDATE ADMINBOARD SET title=#{title}, 
+		content = #{content},
+		filename = #{filename},
+		ischeck =#{ischeck},
+		schedule1 = #{schedule1},
+		schedule2 = #{schedule2}
+		WHERE seq =#{seq}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM ADMINBOARD WHERE seq=#{seq}
+	</delete>
+	<delete id="deleteAll">
+		DELETE FROM ADMINBOARD
+	</delete>
+</mapper>
