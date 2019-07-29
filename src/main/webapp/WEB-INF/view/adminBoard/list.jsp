@@ -67,12 +67,26 @@ a:hover {
 	color: blue;
 	text-decoration: none;
 }
-}
+.select-arrow-image {
+    width: 200px;
+    padding: .8em .5em;
+    font-family: inherit;
+    border: 1px solid #999;
+    box-shadow: none;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    background-image: url("../images/down.png");
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-size: 15px 10px;
+	}
 </style>
 <body>
 	<div id="header"></div>
 	<section>
-		<div class="container" style="width: 850px;">
+		<div class="container" style="width:70%">
 			<div class="row">
 			<h3>
 				<b>HOT PLACE BOARD</b>
@@ -86,25 +100,25 @@ a:hover {
 			</div>
 				<form action="/teamProject/adminBoard/search" method="GET">
 					<div class="btn pull-right">
-						<select class="selectpicker" id="ischeck" name="ischeck">
+						<select id="ischeck" name="ischeck" class="select-arrow-image">
 							<option value="0">전체</option>
 							<option value="1">관광지</option>
 							<option value="2">맛집</option>
 							<option value="3">일정</option>
-						</select> <input type="submit" value="조회" />
+						</select> <input type="submit" class="btn btn-info btn-sm" value="조회" />
 					</div>
 				</form>
 				<form action="/teamProject/adminBoard/delete" method="POST">
 					<c:if test="${authInfo.getId()=='admin'}">
 						<div class="btn pull-left">
-							<input type="checkbox" id="allCheck" />전체 선택 <input
-								type="submit" value="삭제" onclick="return confirmDelete()" /> <input
-								type="button" value="등록"
+							전체 선택 <input type="checkbox" id="allCheck" />&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="submit" class="btn btn-danger" value="삭제" onclick="return confirmDelete()" /> 
+							<input type="button" value="등록" class="btn btn-primary"
 								onclick="location.href='${pageContext.request.contextPath}/adminBoard/write'" />
 						</div>
 					</c:if>
-					<table class="table table-striped text-center"
-						style="border: 1px solid #dddddd">
+					<table class="table text-center"
+						style="border: 1px solid #dddddd;">
 						<thead>
 						</thead>
 						<c:if test="${count == 0}">
@@ -121,23 +135,27 @@ a:hover {
 										value="${fn:substring(adminBoard.regdate, 0, 11)}" />
 									<tr>
 										<c:if test="${authInfo.getId()=='admin'}">
-											<td style="text-align: center;"><input type="checkbox"
-												id="checkBoxList" name="checkBoxList"
-												value="${adminBoard.seq}"></td>
+											<td rowspan="2" style="text-align: center; vertical-align: middle;">
+												<input type="checkbox" id="checkBoxList" name="checkBoxList"
+													value="${adminBoard.seq}">
+											</td>
 										</c:if>
-										<td><img width="430px" height="300px"
-											src="${pageContext.request.contextPath}/resources/upload/${adminBoard.filename}">
+										<td rowspan="2" style="width:450px; height:300px;"><img width="100%" height="100%"
+											src="${pageContext.request.contextPath}/upload/${adminBoard.filename}">
 										</td>
-										<td style="text-align: center;"><a
-											href="<c:url value='/adminBoard/read/${adminBoard.seq}'/>">
-												<br> <br> <strong>${adminBoard.title}</strong> <br>
-												<br>
-										</a> <c:choose>
+										<td style="text-align: center; font-size: 20pt; vertical-align: middle;">
+										제목 : <a href="<c:url value='/adminBoard/read/${adminBoard.seq}'/>">
+											<strong>${adminBoard.title}</strong></a> 
+										</td>
+									</tr>
+									<tr>
+										<td style="vertical-align: middle; font-size:15pt">
+										<c:choose>
 												<c:when test="${adminBoard.ischeck==3}">
-													<p>${adminBoard.schedule1}~${adminBoard.schedule2}</p>
+													<p>일정 : ${adminBoard.schedule1}~${adminBoard.schedule2}</p>
 												</c:when>
 												<c:otherwise>
-													<p>${subDate}</p>
+													<p>작성일 : ${subDate}</p>
 												</c:otherwise>
 											</c:choose></td>
 									</tr>

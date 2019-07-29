@@ -11,8 +11,8 @@
 	<typeAliases>
 		<typeAlias alias="userBoardVO" type="userBoard.domain.UserBoardVO"/>
 		<typeAlias alias="memberVO" type="member.domain.MemberVO"/>
-		<typeAlias alias="RecoVO" type="reco.domain.RecoVO"/>
-		<typeAlias alias="CommentVO" type="comment.domain.CommentVO"/>
+		<typeAlias alias="recoVO" type="reco.domain.RecoVO"/>
+		<typeAlias alias="commentVO" type="comment.domain.CommentVO"/>
 		<typeAlias alias="adminBoardVO" type="adminBoard.domain.AdminBoardVO"/>
 	</typeAliases>
 </configuration>

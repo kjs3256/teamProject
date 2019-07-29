@@ -14,8 +14,6 @@ public class AdminBoardVO {
 	private String filename;
 	private int readcount;
 	private int ischeck;
-	private int latitude;
-	private int longtitude;
 	private Date schedule1;
 	private Date schedule2;
 	
@@ -72,18 +70,6 @@ public class AdminBoardVO {
 	}
 	public void setIscheck(int ischeck) {
 		this.ischeck = ischeck;
-	}
-	public int getLatitude() {
-		return latitude;
-	}
-	public void setLatitude(int latitude) {
-		this.latitude = latitude;
-	}
-	public int getLongtitude() {
-		return longtitude;
-	}
-	public void setLongtitude(int longtitude) {
-		this.longtitude = longtitude;
 	}
 	public Date getSchedule1() {
 		return schedule1;

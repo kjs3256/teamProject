@@ -22,7 +22,7 @@
 		var msg = confirm("정말 삭제하시겠습니까?");
 		if(msg == true){
 			alert("삭제되었습니다.");
-			location.href="${pageContext.request.contextPath}/userBoard/delete/"+seq;
+			location.href="${pageContext.request.contextPath}/adminBoard/delete/"+seq;
 		}
 	}
 </script>
@@ -68,6 +68,11 @@
 							<td style="font-size: 15px;">
 								<div
 									style="width: 80%; height:100%; float: top;">
+					<table class="table text-left">
+						<tr>
+							<td style="font-size: 15px;">
+								<div
+									style="width:100%; height: 100%; float: top;">
 									<br>
 									<br>
 									<br> ${adminBoardVO.content}<br> <br>
@@ -83,6 +88,16 @@
 							class="btn btn-warning">수정</a>
 						<button class="btn btn-danger" onClick="return confirmDelete(${adminBoardVO.seq})">삭제</button>
 					</c:if>
+					<div style="clear:both"></div>
+					<div style="text-align: center;">
+						<a href="<c:url value='/adminBoard/list'/>" class="btn btn-primary">목록</a>
+						<c:if test="${authInfo.getId()=='admin'}">
+							<a href="<c:url value='/adminBoard/edit'/>/${adminBoardVO.seq}"
+								class="btn btn-warning">수정</a>
+							<button class="btn btn-danger"
+								onClick="return confirmDelete(${adminBoardVO.seq})">삭제</button>
+						</c:if>
+					</div>
 				</div>
 				</div>
 			</div>

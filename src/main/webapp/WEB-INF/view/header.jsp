@@ -6,12 +6,11 @@
 <html>
 <head>
 <title>그가거가</title>
-<link href="${pageContext.request.contextPath }/css/style.css"
-	rel="stylesheet" type="text/css">
 <style>
 	#error{
 		color:red;
 	}
+	body { padding-bottom: 70px; }
 </style>
 </head>
 <body>

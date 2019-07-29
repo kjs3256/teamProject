@@ -63,7 +63,7 @@
 										<form:option value="1">관광지</form:option>
 										<form:option value="2">맛집</form:option>
 										<form:option value="3">일정</form:option>
-									</form:select> <input type="button" value="선택" class="form-control"
+									</form:select> <input type="button" value="일정선택" class="form-control"
 									onclick="return change()" /></td>
 							</tr>
 							<tr id="schedule" style="display: none;">

@@ -22,9 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import adminBoard.domain.AdminBoardVO;
 import adminBoard.service.AdminBoardService;
 import member.service.AuthInfo;
-import userBoard.controller.WriteValidator;
-import userBoard.domain.UserBoardVO;
-import userBoard.service.UserBoardService;
 
 @Controller
 @RequestMapping("/adminBoard/*")
@@ -121,17 +118,12 @@ public class AdminBoardController {
 		
 		return "adminBoard/read";
 	}
-	
-	
-	
-	
 	//글 삭제
 	@RequestMapping(value="delete", method=RequestMethod.POST)
 	public String delete(@RequestParam("checkBoxList") List<Integer> chList, Model model, HttpServletRequest request ) {
 		for (Integer ch : chList) {
 			adminBoardService.delete(ch);
 		}
-		page(request,model);
 		return "redirect:/adminBoard/list";
 	}
 	@RequestMapping(value="image")
@@ -155,6 +147,4 @@ public class AdminBoardController {
 		out.println(imgsrc);
 		out.close();
 	}
-	
-	
 }
