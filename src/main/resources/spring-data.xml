@@ -37,6 +37,7 @@
 				<value>classpath:config/sqlmap-userBoard.xml</value>
 				<value>classpath:config/sqlmap-reco.xml</value>
 				<value>classpath:config/sqlmap-comment.xml</value>
+				<value>classpath:config/sqlmap-adminBoard.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -70,5 +71,10 @@
 		<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
 	<bean id="commentSvcImpl" class="comment.service.CommentServiceImpl">
+	</bean>
+	<bean id="adminBoardDao" class="adminBoard.dao.AdminBoardDaoImpl">
+		<constructor-arg ref="sqlSessionTemplate"/>
+	</bean>
+	<bean id="adminBoardSvcImpl" class="adminBoard.service.AdminBoardServiceImpl">
 	</bean>
 </beans>

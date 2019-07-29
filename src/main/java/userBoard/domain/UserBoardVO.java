@@ -14,7 +14,6 @@ public class UserBoardVO {
 	private int readcount;
 	private int commcount;
 	private String loc;
-
 	public String getLoc() {
 		return loc;
 	}
