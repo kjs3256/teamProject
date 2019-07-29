@@ -8,8 +8,6 @@ public class UserBoardVO {
 	private String nickname;
 	private String content;
 	private Timestamp regdate;
-	private String latitude;
-	private String longtitude;
 	private int reco;
 	private int readcount;
 	private int commcount;
@@ -56,22 +54,6 @@ public class UserBoardVO {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	public String getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-
-	public String getLongtitude() {
-		return longtitude;
-	}
-
-	public void setLongtitude(String longtitude) {
-		this.longtitude = longtitude;
-	}
-
 	public int getReco() {
 		return reco;
 	}

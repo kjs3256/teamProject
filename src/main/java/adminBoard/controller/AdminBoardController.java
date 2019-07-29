@@ -1,9 +1,12 @@
 package adminBoard.controller;
 
+import java.io.File;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -14,12 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import adminBoard.domain.AdminBoardVO;
 import adminBoard.service.AdminBoardService;
 import member.service.AuthInfo;
 import userBoard.controller.WriteValidator;
-import userBoard.service.UserBoardService;
+import userBoard.domain.UserBoardVO;
 
 @Controller
 @RequestMapping("/adminBoard/*")
@@ -94,7 +98,6 @@ public class AdminBoardController {
 	@RequestMapping(value="write", method=RequestMethod.POST)
 	public String write(@ModelAttribute("formData")AdminBoardVO vo, Errors errors, 
 			HttpSession session){
-		new WriteValidator().validate(vo, errors);
 		if(errors.hasErrors()) {
 			return "adminBoard/write";
 		}
@@ -117,17 +120,33 @@ public class AdminBoardController {
 		
 		return "adminBoard/read";
 	}
-	
-	
-	
-	
 	//글 삭제
 	@RequestMapping(value="delete", method=RequestMethod.POST)
 	public String delete(@RequestParam("checkBoxList") List<Integer> chList, Model model, HttpServletRequest request ) {
 		for (Integer ch : chList) {
 			adminBoardService.delete(ch);
 		}
-		page(request,model);
 		return "redirect:/adminBoard/list";
+	}
+	@RequestMapping(value="image")
+	public void image(@ModelAttribute AdminBoardVO vo, @RequestParam("file") MultipartFile file,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("image uploading");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		String uploadPath = request.getSession().getServletContext().getRealPath("/upload/");
+		System.out.println("uploadPath : "+uploadPath);
+		
+		String filename = file.getOriginalFilename();
+		String filePath = uploadPath + "\\" + filename;
+		
+		File f = new File(filePath);
+		if(!f.exists()) {
+			f.mkdirs();
+		}
+		file.transferTo(f);
+		String imgsrc = request.getContextPath()+"/upload/"+filename;
+		out.println(imgsrc);
+		out.close();
 	}
 }
