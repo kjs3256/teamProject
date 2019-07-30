@@ -20,8 +20,8 @@ public class MateServiceImpl implements MateService {
 	}
 	
 	@Override
-	public List<MateVO> list(){
-		return mateDao.list();
+	public List<MateVO> list(int start, int end) {
+		return mateDao.list(start, end);
 	}
 	
 	@Override
@@ -34,12 +34,14 @@ public class MateServiceImpl implements MateService {
 		mateDao.insert(mateVO);
 	}
 
-	public static List<MateVO> selectmateList(MateVO mateVO) {
-		return mateDao.selectmateList(mateVO);
+	@Override
+	public int count() {
+		return mateDao.count();
 	}
-
-	public static int selectmateListCnt(MateVO mateVO) {
-		return mateDao.selectmateListCnt(mateVO);
+	
+	@Override
+	public void write(MateVO mateVO) {
+		mateDao.insert(mateVO);
 	}
 
 

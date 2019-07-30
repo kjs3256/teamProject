@@ -26,7 +26,7 @@ public class UserBoardDaoImpl implements UserBoardDao {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("start", start);
 		map.put("end", end);
-		return sqlSessionTemplate.selectList("userBoardDao.list",map);
+		return sqlSessionTemplate.selectList("userBoardDao.list", map);
 	}
 
 	@Override

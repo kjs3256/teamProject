@@ -45,15 +45,14 @@
 		destroy-method="clearCache">
 		<constructor-arg ref="sqlSessionFactory"/>	
 	</bean>
-<<<<<<< HEAD
 	
-	<bean id="mateDao" class="mate.dao.MateDaoMybatis">
+	<bean id="mateDao" class="mate.dao.MateDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"></constructor-arg>
 	</bean>
 	
 	<bean id="mateServiceImpl" class="mate.service.MateServiceImpl">
 		<property name="mateDao" ref="mateDao"/>
-=======
+	</bean>
 	<bean id="memberDao" class="member.dao.MemberDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
@@ -80,6 +79,5 @@
 		<constructor-arg ref="sqlSessionTemplate"/>
 	</bean>
 	<bean id="commentSvcImpl" class="comment.service.CommentServiceImpl">
->>>>>>> 516cdc3e704e11452653614a20af87075ee29a6e
 	</bean>
 </beans>
