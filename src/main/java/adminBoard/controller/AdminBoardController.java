@@ -22,8 +22,6 @@ import org.springframework.web.multipart.MultipartFile;
 import adminBoard.domain.AdminBoardVO;
 import adminBoard.service.AdminBoardService;
 import member.service.AuthInfo;
-import userBoard.controller.WriteValidator;
-import userBoard.domain.UserBoardVO;
 
 @Controller
 @RequestMapping("/adminBoard/*")
@@ -120,6 +118,22 @@ public class AdminBoardController {
 		
 		return "adminBoard/read";
 	}
+	@RequestMapping(value="edit/{seq}", method=RequestMethod.GET)
+	public String edit(@PathVariable int seq, Model model) {
+		AdminBoardVO adminBoardVO = adminBoardService.read(seq);
+		model.addAttribute("formData", adminBoardVO);
+		return "adminBoard/edit";
+	}
+
+	@RequestMapping(value="edit/{seq}", method=RequestMethod.POST)
+	public String edit(@ModelAttribute("formData")AdminBoardVO adminBoardVO, Errors errors, @PathVariable int seq) {
+		if(errors.hasErrors()) {
+			return "/adminBoard/edit";
+		}else {
+			adminBoardService.edit(adminBoardVO);
+			return "redirect:/adminBoard/read/"+seq;
+		}
+	}
 	//글 삭제
 	@RequestMapping(value="delete", method=RequestMethod.POST)
 	public String delete(@RequestParam("checkBoxList") List<Integer> chList, Model model, HttpServletRequest request ) {
@@ -127,6 +141,17 @@ public class AdminBoardController {
 			adminBoardService.delete(ch);
 		}
 		return "redirect:/adminBoard/list";
+	}
+	@RequestMapping(value="delete/{seq}", method=RequestMethod.GET)
+	public String delete(@PathVariable int seq, HttpSession session, Model model) {
+		AdminBoardVO adminBoardVO = adminBoardService.read(seq);
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		if(authInfo != null && authInfo.getNickname().equals("관리자")) {
+			adminBoardService.delete(seq);
+			return "redirect:/adminBoard/list";
+		}
+		model.addAttribute("adminBoardVO", adminBoardVO);
+		return "/adminBoard/delete";
 	}
 	@RequestMapping(value="image")
 	public void image(@ModelAttribute AdminBoardVO vo, @RequestParam("file") MultipartFile file,

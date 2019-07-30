@@ -23,18 +23,25 @@
 			<bean class="interceptor.AuthCheckInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
 	<bean class="member.controller.RegisterController">
 		<property name="memberService" ref="memberSvcImpl"/>
 	</bean>
+	
 	<bean class="member.controller.LoginController">
 		<property name="authService" ref="authService"/>
 	</bean>
+	
 	<bean class="member.controller.LogoutController"/>
+	
 	<bean class="member.controller.ManagerController">
 		<property name="memberService" ref="memberSvcImpl"/>
 	</bean>
 	<bean class="main.controller.MainController">
 		<property name="userBoardService" ref="userBoardSvcImpl"/>
+	</bean>
+	<bean id="mateController" class="mate.controller.MateController">
+		<property name="mateService" ref="mateServiceImpl" />
 	</bean>
 	
 	<bean class="userBoard.controller.UserBoardController">
