@@ -6,11 +6,21 @@
 <html>
 <head>
 <title>그가거가</title>
-<style>
+<style type="text/css">
+
 	#error{
 		color:red;
 	}
-	body { padding-bottom: 70px; }
+	
+	@font-face { font-family: 'S-CoreDream-8Heavy';
+	 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff'); 
+	 font-weight: normal; font-style: normal; }
+	 
+	body { padding-bottom: 70px; 
+	font-family:'S-CoreDream-8Heavy';
+	font-size:15px;
+	}
+	
 </style>
 </head>
 <body>
@@ -24,7 +34,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="<c:url value='/main'/>"> 
-				 <span style="font-size:20pt">로고</span>
+				<img src="images/로고.png" width=100px; height=80px;>
 				</a>
 			</div>
 

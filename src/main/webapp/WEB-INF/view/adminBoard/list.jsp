@@ -105,7 +105,7 @@ a:hover {
 							<option value="1">관광지</option>
 							<option value="2">맛집</option>
 							<option value="3">일정</option>
-						</select> <input type="submit" class="btn btn-info btn-sm" value="조회" />
+						</select> <input type="submit" class="btn btn-warning btn-sm" value="조회" />
 					</div>
 				</form>
 				<form action="/teamProject/adminBoard/delete" method="POST">
