@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mateDao">
+	<select id="list" parameterType="map" resultType="mateVO">
+		SELECT * FROM (select rownum rnum, seq, title, nickname, 
+		regdate FROM (SELECT * FROM MATE_BOARD
+		ORDER BY seq desc))<![CDATA[ WHERE rnum>=#{start} AND rnum<=#{end}]]>
+	</select>
+	<select id="count" resultType="int">
+		select count(*) from MATE_BOARD
+	</select>
+	<select id="select" parameterType="int" resultType="mateVO">
+		SELECT * FROM MATE_BOARD WHERE seq = #{seq}
+	</select>
+	
+	<insert id="insert" parameterType="mateVO">
+		INSERT INTO MATE_BOARD VALUES (MATE_BOARD_SEQ.nextval, #{title}, #{nickname}, SYSDATE)
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM MATE_BOARD WHERE seq = #{seq}
+	</delete>
+	
+</mapper>

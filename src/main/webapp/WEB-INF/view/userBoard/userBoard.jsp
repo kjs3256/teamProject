@@ -48,8 +48,12 @@
 <body>
 	<div id="header"></div>
 	<section>
-		<div class="container">
+		<div class="container" style="width:80%">
 			<div class="row">
+			<h3>
+				<b>HIDE TASTY</b>
+			</h3>
+			<hr style="border: solid 3px black;">
 				<div class="col-lg-6" style="margin-top:50px;">
 					<table class="table text-center" style="border:1px solid #dddddd; color:#2A0A12;">
 						<thead>
