@@ -52,7 +52,6 @@
 	</bean>
 	
 	<bean id="mateServiceImpl" class="mate.service.MateServiceImpl">
-		<property name="mateDao" ref="mateDao"/>
 	</bean>
 	<bean id="memberDao" class="member.dao.MemberDaoImpl">
 		<constructor-arg ref="sqlSessionTemplate"/>

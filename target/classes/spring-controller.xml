@@ -22,6 +22,17 @@
 			<mvc:exclude-mapping path="/comment/list/**"/>
 			<bean class="interceptor.AuthCheckInterceptor"/>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/adminBoard/**"/>
+			<mvc:exclude-mapping path="/adminBoard/list"/>
+			<mvc:exclude-mapping path="/adminBoard/search"/>
+			<mvc:exclude-mapping path="/adminBoard/read/**"/>
+			<bean class="interceptor.AuthCheckInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/mate/delete/**"/>
+			<bean class="interceptor.AuthCheckInterceptor"/>
+		</mvc:interceptor>
 	</mvc:interceptors>
 	
 	<bean class="member.controller.RegisterController">

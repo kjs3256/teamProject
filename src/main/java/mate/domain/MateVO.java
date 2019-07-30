@@ -9,7 +9,7 @@ public class MateVO {
 	private int seq;
 	private String title;
 	private String nickname;
-	private Timestamp regDate;
+	private Timestamp regdate;
 	
 	public MateVO() {}
 
@@ -38,11 +38,11 @@ public class MateVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	public Timestamp getRegDate() {
-		return regDate;
+	public Timestamp getRegdate() {
+		return regdate;
 	}
-	public void setRegDate(Timestamp regDate) {
-		this.regDate = regDate;
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
 	}
 
 

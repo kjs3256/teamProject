@@ -14,3 +14,11 @@ function commentCheck(){
 	}
 	document.commentForm.submit();
 }
+function mateWrite(){
+	if(document.write.title.value == ""){
+		alert("내용을 입력하세요.");
+		document.write.title.focus();
+		return false;
+	}
+	document.write.submit();
+}

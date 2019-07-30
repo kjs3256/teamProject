@@ -31,8 +31,7 @@ public class UserBoardController {
 	public void setUserBoardService(UserBoardService userBoardService){
 		this.userBoardService = userBoardService;
 	}
-	@RequestMapping("list")
-	public String list(UserBoardVO userBoardVO, HttpServletRequest request, Model model){
+	public void page(HttpServletRequest request, Model model) {
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) {
 			pageNum = "1";
@@ -70,6 +69,10 @@ public class UserBoardController {
 		model.addAttribute("count", count);
 		model.addAttribute("startRow", startRow);
 		model.addAttribute("endRow", endRow);
+	}
+	@RequestMapping("list")
+	public String list(UserBoardVO userBoardVO, HttpServletRequest request, Model model){
+		page(request, model);
 		return "userBoard/userBoard";
 	}
 	@RequestMapping("list/loc")

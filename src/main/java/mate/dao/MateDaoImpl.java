@@ -31,8 +31,8 @@ public class MateDaoImpl implements MateDao {
 	}
 	
 	@Override
-	public int delete(MateVO mateVO) {
-		return sqlSessionTemplate.delete("mateDao.delete", mateVO);
+	public int delete(int seq) {
+		return sqlSessionTemplate.delete("mateDao.delete", seq);
 	}
 	
 	@Override
@@ -43,6 +43,10 @@ public class MateDaoImpl implements MateDao {
 	@Override
 	public int count() {
 		return sqlSessionTemplate.selectOne("mateDao.count");
+	}
+	@Override
+	public MateVO read(int seq) {
+		return sqlSessionTemplate.selectOne("mateDao.select", seq);
 	}
 
 	

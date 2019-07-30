@@ -18,9 +18,8 @@
 		INSERT INTO MATE_BOARD VALUES (MATE_BOARD_SEQ.nextval, #{title}, #{nickname}, SYSDATE)
 	</insert>
 	
-	<delete id="delete" parameterType="mateVO">
+	<delete id="delete" parameterType="int">
 		DELETE FROM MATE_BOARD WHERE seq = #{seq}
-		AND password = #{password}
 	</delete>
 	
 </mapper>

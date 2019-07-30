@@ -2,6 +2,7 @@ package mate.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mate.dao.MateDao;
@@ -9,15 +10,8 @@ import mate.domain.MateVO;
 
 @Service
 public class MateServiceImpl implements MateService {
-	private static MateDao mateDao;
-	
-	public MateDao getMateDao() {
-		return mateDao;
-	}
-	
-	public void setMateDao(MateDao mateDao) {
-		MateServiceImpl.mateDao = mateDao;
-	}
+	@Autowired
+	private MateDao mateDao;
 	
 	@Override
 	public List<MateVO> list(int start, int end) {
@@ -25,8 +19,8 @@ public class MateServiceImpl implements MateService {
 	}
 	
 	@Override
-	public int delete(MateVO mateVO) {
-		return mateDao.delete(mateVO);
+	public int delete(int seq) {
+		return mateDao.delete(seq);
 	}
 	
 	@Override
@@ -38,11 +32,10 @@ public class MateServiceImpl implements MateService {
 	public int count() {
 		return mateDao.count();
 	}
-	
-	@Override
-	public void write(MateVO mateVO) {
-		mateDao.insert(mateVO);
-	}
 
+	@Override
+	public MateVO read(int seq) {
+		return mateDao.read(seq);
+	}
 
 }
