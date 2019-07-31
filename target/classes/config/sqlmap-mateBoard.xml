@@ -7,6 +7,9 @@
 		regdate FROM (SELECT * FROM MATE_BOARD
 		ORDER BY seq desc))<![CDATA[ WHERE rnum>=#{start} AND rnum<=#{end}]]>
 	</select>
+	<select id="mainList" resultType="mateVO">
+		SELECT * FROM mate_board ORDER BY seq DESC
+	</select>
 	<select id="count" resultType="int">
 		select count(*) from MATE_BOARD
 	</select>

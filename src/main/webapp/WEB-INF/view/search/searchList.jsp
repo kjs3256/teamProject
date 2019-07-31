@@ -26,8 +26,26 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<h3><b>${keyword }에 대한 검색 결과</b></h3><hr style="border:solid 1px blue">
-				<h4> 숨은 맛집 게시판 ></h4>
+				<h3><b>"${keyword }"에 대한 검색 결과</b></h3><hr style="border:solid 1px blue">
+				<h4> HOT PLACE ></h4>
+				<div id="search">
+					<c:if test="${empty adminBoardList}">
+						<h3 class="text-center">검색 결과가 없습니다.</h3>
+						<hr style="border:double 1px black">
+					</c:if>
+					<c:if test="${!empty adminBoardList}">
+						<c:forEach var="board" items="${adminBoardList}" begin="0" end="4">
+							<a href= "<c:url value='/adminBoard/read/${board.seq }'/>" style="font-size:16px;">
+							${board.title}</a><br>
+							<br>
+							관리자 | 
+								<small>조회 : ${board.readcount }</small>
+								<br><hr>
+						</c:forEach>
+						<hr style="border:double 1px black">
+					</c:if>
+				</div>
+				<h4> HIDE TASTY ></h4>
 				<div id="search">
 					<c:if test="${empty userBoardList}">
 						<h3 class="text-center">검색 결과가 없습니다.</h3>
@@ -36,7 +54,6 @@
 						<c:forEach var="board" items="${userBoardList}" begin="0" end="4">
 							<a href= "<c:url value='/userBoard/read/${board.seq }'/>" style="font-size:16px;">
 							${board.title}</a><br>
-							${board.content }
 							<br>
 								${board.nickname } |
 								<small>조회 : ${board.readcount }</small> |

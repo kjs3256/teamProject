@@ -49,4 +49,8 @@ public class AdminBoardServiceImpl implements AdminBoardService{
 	public void deleteAll() {
 		adminBoardDao.deleteAll();
 	}
+	@Override
+	public List<AdminBoardVO> mainList() {
+		return adminBoardDao.mainList();
+	}
 }

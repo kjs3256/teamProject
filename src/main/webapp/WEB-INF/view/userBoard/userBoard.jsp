@@ -12,8 +12,6 @@
 <!-- 스타일시트 -->
 <link href="${pageContext.request.contextPath }/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
-<link href="${pageContext.request.contextPath }/css/style.css"
-	rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -38,7 +36,7 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     background-color: transparent;
-    background-image: url("../images/down.png");
+    background-image: url("${pageContext.request.contextPath}/images/down.png");
     background-position: center right;
     background-repeat: no-repeat;
     background-size: 15px 10px;

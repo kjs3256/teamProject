@@ -13,4 +13,5 @@ public interface AdminBoardDao {
 	public abstract void update(AdminBoardVO adminBoardVO);
 	public abstract void delete(int seq);
 	public abstract void deleteAll();
+	public abstract List<AdminBoardVO> mainList();
 }

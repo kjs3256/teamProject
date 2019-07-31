@@ -69,10 +69,10 @@
 					</div>
 				</div>
 
-				<form:form class="navbar-form navbar-right" action="${pageContext.request.contextPath }/search" method="get">
+				<form class="navbar-form navbar-right" action="${pageContext.request.contextPath }/search" method="get">
 					<div class="form-group" style="display: inline;">
 						<div class="input-group">
-							<input type="text" class="form-control" name="keyword"/>
+							<input type="text" class="form-control" name="keyword" placeholder="검색(제목)"/>
 							<span class="input-group-addon">
 							<button type="submit" style="background: transparent; border: none; cursor: pointer;">
 							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -80,7 +80,7 @@
 							</span>
 						</div>
 					</div>
-				</form:form>
+				</form>
 			</div>
 		</div>
 	</header>

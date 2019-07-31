@@ -14,4 +14,7 @@ public interface MateService {
 	public abstract int count();
 
 	public abstract MateVO read(int seq);
+
+	public abstract List<MateVO> mainList();
+	
 }

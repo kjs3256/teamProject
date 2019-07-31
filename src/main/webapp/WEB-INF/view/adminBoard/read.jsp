@@ -46,16 +46,6 @@
 					<li><b>${adminBoardVO.title}</b></li>
 				</ol>
 			</div>
-			<!-- 네비게이션 -->
-			<div id="sideNav"
-				style="float: left; border-top: none; border-bottom: none; padding-right: 50px;">
-				<ul class="nav nav-pills nav-stacked" style="text-align: center;">
-					<li role="presentation" class="active"><a href="#"><b>전체</b></a></li>
-					<li role="presentation"><a href="#"><b>관광지</b></a></li>
-					<li role="presentation"><a href="#"><b>맛집</b></a></li>
-					<li role="presentation"><a href="#"><b>일정</b></a></li>
-				</ul>
-			</div>
 			<div class=container>
 				<div class="row">
 					<h2>${adminBoardVO.title}</h2>

@@ -38,4 +38,10 @@ public class MateServiceImpl implements MateService {
 		return mateDao.read(seq);
 	}
 
+	@Override
+	public List<MateVO> mainList() {
+		return mateDao.mainList();
+	}
+
+
 }

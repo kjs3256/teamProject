@@ -23,6 +23,10 @@
 			<bean class="interceptor.AuthCheckInterceptor"/>
 		</mvc:interceptor>
 		<mvc:interceptor>
+			<mvc:mapping path="/reco"/>
+			<bean class="interceptor.AuthCheckInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
 			<mvc:mapping path="/adminBoard/**"/>
 			<mvc:exclude-mapping path="/adminBoard/list"/>
 			<mvc:exclude-mapping path="/adminBoard/search"/>
@@ -50,6 +54,8 @@
 	</bean>
 	<bean class="main.controller.MainController">
 		<property name="userBoardService" ref="userBoardSvcImpl"/>
+		<property name="adminBoardService" ref="adminBoardSvcImpl"/>
+		<property name="mateService" ref="mateServiceImpl"/>
 	</bean>
 	<bean id="mateController" class="mate.controller.MateController">
 		<property name="mateService" ref="mateServiceImpl" />

@@ -77,6 +77,9 @@ public class UserBoardController {
 	}
 	@RequestMapping("list/loc")
 	public String list(UserBoardVO userBoardVO, HttpServletRequest request, Model model, @RequestParam("loc") String loc){
+		if(loc.equals("지역")) {
+			return "redirect:/userBoard/list";
+		}
 		String pageNum = request.getParameter("pageNum");
 		if(pageNum == null) {
 			pageNum = "1";

@@ -39,7 +39,7 @@ public class UserBoardDaoImpl implements UserBoardDao {
 
 	@Override
 	public List<UserBoardVO> selectByKey(String keyword) {
-		return sqlSessionTemplate.selectList("selectKeyword", keyword);
+		return sqlSessionTemplate.selectList("userBoardDao.selectKeyword", keyword);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class UserBoardDaoImpl implements UserBoardDao {
 	}
 	@Override
 	public List<UserBoardVO> selectMain() {
-		return sqlSessionTemplate.selectList("mainList");
+		return sqlSessionTemplate.selectList("userBoardDao.mainList");
 	}
 
 }

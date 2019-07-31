@@ -48,6 +48,10 @@ public class MateDaoImpl implements MateDao {
 	public MateVO read(int seq) {
 		return sqlSessionTemplate.selectOne("mateDao.select", seq);
 	}
+	@Override
+	public List<MateVO> mainList() {
+		return sqlSessionTemplate.selectList("mateDao.mainList");
+	}
 
 	
 

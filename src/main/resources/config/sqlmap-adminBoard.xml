@@ -7,9 +7,12 @@
 		content, regdate, filename, readcount, ischeck, schedule1, schedule2 FROM (SELECT * FROM ADMINBOARD
 		ORDER BY seq desc))<![CDATA[ WHERE rnum>=#{start} AND rnum<=#{end}]]>
 	</select>
+	<select id="mainList" resultType="adminBoardVO">
+		SELECT * FROM adminboard ORDER BY seq DESC
+	</select>
 	<select id="selectKeyword" parameterType="String" resultType="adminBoardVO">
 		SELECT * FROM ADMINBOARD 
-		WHERE title LIKE '%'||#{keyword}||'%' 
+		WHERE title LIKE '%'||#{keyword}||'%'
 	</select>
 	<select id="selectIscheck" parameterType="int" resultType="adminBoardVO">
 		SELECT * FROM ADMINBOARD

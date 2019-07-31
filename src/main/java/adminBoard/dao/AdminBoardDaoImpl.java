@@ -33,7 +33,7 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 
 	@Override
 	public List<AdminBoardVO> selectByKey(String keyword) {
-		return sqlSessionTemplate.selectList("selectKeyword",keyword);
+		return sqlSessionTemplate.selectList("adminBoardDao.selectKeyword",keyword);
 	}
 	@Override
 	public List<AdminBoardVO> selectByIscheck(int ischeck) {
@@ -69,5 +69,9 @@ public class AdminBoardDaoImpl implements AdminBoardDao {
 	@Override
 	public void deleteAll() {
 		sqlSessionTemplate.delete("deleteAll");
+	}
+	@Override
+	public List<AdminBoardVO> mainList() {
+		return sqlSessionTemplate.selectList("adminBoardDao.mainList");
 	}
 }

@@ -54,20 +54,16 @@ background-size: 100% 1000px;
 		</div>
 			<div class="col-md-12" style="margin-top: 30px;">
 				<div class="text-center">
-					<h2>HOT PLACE</h2>
+					<h2><a href="<c:url value='/adminBoard/list'/>" role="button">HOT PLACE</a></h2>
 					<br>
 					<div class="row">
 					<c:forEach var="aList" items="${adminBoardList}" begin="0" end="2">
 						<div class="col-sm-6 col-md-4">
 							<div class="thumbnail">
-								<img src="${pageContext.request.contextPath}/upload/${adminBoardList.filename}" alt="...">
+								<img src="${pageContext.request.contextPath}/upload/${aList.filename}" alt="...">
 								<div class="caption">
-									<h3>${adminBoardList.title}</h3>
-									<p>${adminBoardList.schedule1}</p>
-									<p>
-										<a href="#" class="btn btn-primary" role="button">Button</a> <a
-											href="#" class="btn btn-default" role="button">Button</a>
-									</p>
+									<h3>${aList.title}</h3>
+									<p>${aList.schedule1}</p>
 								</div>
 							</div>
 						</div>
@@ -75,7 +71,7 @@ background-size: 100% 1000px;
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6" style="margin-top: 30px;">
+			<div class="col-md-5" style="margin-top: 30px;">
 				<div class="text-center">
 					<table class="table table-striped text-center"
 						style="border: 1px solid #dddddd">
@@ -83,12 +79,12 @@ background-size: 100% 1000px;
 							<tr>
 								<th colspan="4">
 									<h4>
-										<strong>숨은 맛집 추천</strong>
+										<strong>HIDE TASTY</strong>
 									</h4>
 								</th>
 								<th colspan="1"
 									style="vertical-align: middle; text-align: center;"><a
-									href="<c:url value='/userBoard/list'/>" role="button"> <span
+									href="<c:url value='/userBoard/list'/>" > <span
 										class="glyphicon glyphicon-plus"></span></a></th>
 							</tr>
 							<tr>
@@ -116,40 +112,36 @@ background-size: 100% 1000px;
 						</tbody>
 					</table>
 				</div>
+			</div>
+			<div class="col-md-7" style="margin-top: 30px;">
 				<div class="text-center">
 					<table class="table table-striped text-center"
 						style="border: 1px solid #dddddd">
 						<thead>
 							<tr>
-								<th colspan="4">
+								<th colspan="2">
 									<h4>
-										<strong>여행 메이트</strong>
+										<strong>TOUR MATE</strong>
 									</h4>
 								</th>
 								<th colspan="1"
 									style="vertical-align: middle; text-align: center;"><a
-									href="<c:url value='/userBoard/list'/>" role="button"> <span
+									href="<c:url value='/mate/list'/>" role="button"> <span
 										class="glyphicon glyphicon-plus"></span></a></th>
 							</tr>
 							<tr>
-								<th
-									style="background-color: #eeeeee; width: 40%; text-align: center;">제목</th>
-								<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-								<th style="background-color: #eeeeee; text-align: center;">작성일</th>
-								<th style="background-color: #eeeeee; text-align: center;">조회</th>
-								<th style="background-color: #eeeeee; text-align: center;">추천</th>
+								<th style="background-color: #eeeeee; width: 80%; text-align: center;">제목</th>
+								<th style="background-color: #eeeeee; text-align: right;">작성자</th>
+								<th style="background-color: #eeeeee; width: 10%; text-align: center;">&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="board" items="${userBoardList}" begin="0" end="4">
+							<c:forEach var="board" items="${mateBoardList}" begin="0" end="4">
 								<tr>
-									<td style="text-align: center;"><a
-										href="<c:url value='/userBoard/read/${board.seq }'/>">
-											${board.title}</a></td>
-									<td>${board.nickname }</td>
-									<td>${sdf.format(board.regdate) }</td>
-									<td>${board.readcount }</td>
-									<td>${board.reco }</td>
+									<td style="text-align: center;">
+									${board.title}</td>
+									<td style="text-align: right">${board.nickname }</td>
+									<td>&nbsp;</td>
 								</tr>
 							</c:forEach>
 						</tbody>
