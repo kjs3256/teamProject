@@ -20,6 +20,8 @@
 	font-family:'S-CoreDream-8Heavy';
 	font-size:15px;
 	}
+	a:hover{
+		color:yellow; text-decoration: none;	}
 	
 </style>
 </head>
@@ -33,17 +35,17 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value='/main'/>"> 
-				<img src="images/로고.png" width=100px; height=80px;>
+				<a class="navbar-brand"  style="padding:2px;" href="<c:url value='/main'/>"> 
+				<img src="${pageContext.request.contextPath }/images/로고2.png" width=100px; height=100%;>
 				</a>
 			</div>
 
 			<div class="navbar-collapse collapse" id="navbar-collapsible">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="<c:url value='/adminBoard/list'/>"><span style="font-size:15pt; color:white;">핫 플레이스</span></a></li>
-					<li><a href="<c:url value='/userBoard/list'/>"><span style="font-size:15pt; color:white;">숨은 맛집 추천</span></a></li>
-					<li><a href="<c:url value='/mate/list'/>"><span style="font-size:15pt; color:white;">여행 메이트</span></a></li>
+					<li><a id="menu" href="<c:url value='/adminBoard/list'/>"><span style="font-size:15pt; color:white;">핫 플레이스</span></a></li>
+					<li><a id="menu"  href="<c:url value='/userBoard/list'/>"><span style="font-size:15pt; color:white;">숨은 맛집 추천</span></a></li>
+					<li><a id="menu"  href="<c:url value='/mate/list'/>"><span style="font-size:15pt; color:white;">여행 메이트</span></a></li>
 				</ul>
 
 				<div class="navbar-right btn-group">

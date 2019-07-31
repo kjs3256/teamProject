@@ -2,24 +2,22 @@ package main.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import adminBoard.controller.*;
 import userBoard.domain.UserBoardVO;
 import userBoard.service.UserBoardService;
 
 @Controller
 public class MainController {
-//	private HotBoardService hotBoardService;
 	private UserBoardService userBoardService;
 //	private MateBoardService mateBoardService;
-	
-//	public void setHotBoardService(HotBoardService hotBoardService) {
-//		this.hotBoardService = hotBoardService;
-//	}
 	public void setUserBoardService(UserBoardService userBoardService) {
 		this.userBoardService = userBoardService;
 	}
@@ -28,11 +26,14 @@ public class MainController {
 //	}
 
 
+
 	@RequestMapping("/main")
 	public String main(Model model) {
+		
 		model.addAttribute("userBoardList", userBoardService.mainList());
 		return "main";
 	}
+	
 
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public String search(@RequestParam("keyword") String keyword, Model model) {

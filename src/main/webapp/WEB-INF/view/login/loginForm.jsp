@@ -26,6 +26,9 @@
 		<div class="container">
 			<div class="col-lg-4"></div>
 			<div class="col-lg-4" style="margin-top:50px;">
+			<div>
+			<img class="img-responsive center-block" src="${pageContext.request.contextPath}/images/그가거가.jpg" >			
+			</div>
 				<!-- 점보트론 -->
 				<div class="jumbotron" style="padding-top:20px;">
 				<!-- 로그인 정보를 숨기면서 전송post -->

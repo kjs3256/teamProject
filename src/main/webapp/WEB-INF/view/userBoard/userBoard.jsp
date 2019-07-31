@@ -124,7 +124,7 @@
 						</tbody>
 					</table>
 				</div>
-				<h3><b>숨은 맛집 게시판(전체 글:${count })</b></h3>
+				<hr>
 				<div class="select-box select-script">
 				<form:form commandName="userBoardVO" method="get" action="${pageContext.request.contextPath }/userBoard/list/loc">
 					<form:select path="loc" class="select-arrow-image">
