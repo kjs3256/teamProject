@@ -10,9 +10,11 @@ import org.springframework.validation.Validator;
 
 public class RegisterValidator implements Validator{
 	private static final String phoneRegExp = "^01(?:0|1|[6-9])[-]?(\\d{3}|\\d{4})[-]?(\\d{4})$";
-	private Pattern pattern;
+	private static final String idRegExp = "^[a-z]+[a-z0-9+]{4,12}$";
+	private Pattern pattern1, pattern2;
 	public RegisterValidator() {
-		pattern = Pattern.compile(phoneRegExp);
+		pattern1 = Pattern.compile(phoneRegExp);
+		pattern2 = Pattern.compile(idRegExp);
 	}
 
 	@Override
@@ -29,13 +31,18 @@ public class RegisterValidator implements Validator{
 		if(regCmd.getPhone()== null || regCmd.getPhone().trim().isEmpty()) {
 			errors.rejectValue("phone", "required");
 		}else {
-			Matcher matcher = pattern.matcher(regCmd.getPhone());
+			Matcher matcher = pattern1.matcher(regCmd.getPhone());
 			if(!matcher.matches()) {
 				errors.rejectValue("phone", "bad");
 			}
 		}
 		if(regCmd.getId() == null || regCmd.getId().trim().isEmpty()) {
 			errors.rejectValue("id", "required");
+		}else {
+			Matcher matcher = pattern2.matcher(regCmd.getId());
+			if(!matcher.matches()) {
+				errors.rejectValue("id", "badId");
+			}
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickname", "required");
 		ValidationUtils.rejectIfEmpty(errors, "password", "required");

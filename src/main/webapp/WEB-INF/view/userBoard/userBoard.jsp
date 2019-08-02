@@ -12,6 +12,8 @@
 <!-- 스타일시트 -->
 <link href="${pageContext.request.contextPath }/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath }/css/style.css"
+	rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
@@ -46,14 +48,21 @@
 <body>
 	<div id="header"></div>
 	<section>
-		<div class="container" style="width:80%">
+		<div class="container" style="width:90%">
 			<div class="row">
 			<h3>
 				<b>HIDE TASTY</b>
 			</h3>
 			<hr style="border: solid 3px black;">
 				<div class="col-lg-6" style="margin-top:50px;">
-					<table class="table text-center" style="border:1px solid #dddddd; color:#2A0A12;">
+					<table class="table text-center" style="border:1px solid #dddddd; color:#2A0A12; width:100%; table-layout:fixed;">
+						<colgroup>
+							<col style="width:5%;">
+							<col style="width:15%;">
+							<col style="width:50%;">
+							<col style="width:20%;">
+							<col style="width:10%;">
+						</colgroup>
 						<thead>
 							<tr>
 								<th colspan="5">
@@ -63,7 +72,7 @@
 							<tr>
 								<th style="background-color:#eeeeee; text-align:center;">&nbsp;</th>
 								<th style="background-color:#eeeeee; width:15%; text-align:center;">카테고리</th>
-								<th style="background-color:#eeeeee; width:40%; text-align:center;">제목</th>
+								<th style="background-color:#eeeeee; width:50%; text-align:center;">제목</th>
 								<th style="background-color:#eeeeee; text-align:center;">작성자</th>
 								<th style="background-color:#eeeeee; text-align:center;">조회</th>
 							</tr>
@@ -75,9 +84,11 @@
 										<span class="glyphicon glyphicon-bullhorn"></span>
 									</td>
 									<td>${board.loc }</td>
-									<td style="text-align:center;">
-										<a href= "<c:url value='/userBoard/read/${board.seq }'/>
-										?pageNum=${currentPage}">${board.title}</a>&nbsp;&nbsp;<small style="color:#61210B;"><b>[ ${board.commcount } ]</b></small>
+									<td>
+										<div class="over">
+											<a href= "<c:url value='/userBoard/read/${board.seq }'/>
+											?pageNum=${currentPage}">${board.title}</a>&nbsp;&nbsp;<small style="color:#61210B;"><b>[ ${board.commcount } ]</b></small>
+										</div>
 									</td>
 									<td>${board.nickname }</td>
 									<td>${board.readcount }</td>
@@ -87,7 +98,15 @@
 					</table>
 				</div>
 				<div class="col-lg-6" style="margin-top:50px;">
-					<table class="table text-center" style="border:1px solid #dddddd; color:#2A0A12;">
+					<table class="table text-center" style="border:1px solid #dddddd; color:#2A0A12; width:100%; table-layout:fixed;">
+						<colgroup>
+							<col style="width:5%;">
+							<col style="width:15%;">
+							<col style="width:40%;">
+							<col style="width:20%;">
+							<col style="width:10%;">
+							<col style="width:10%;">
+						</colgroup>
 						<thead>
 							<tr>
 								<th colspan="6">
@@ -96,8 +115,8 @@
 							</tr>
 							<tr>
 								<th style="background-color:#eeeeee; text-align:center;">&nbsp;</th>
-								<th style="background-color:#eeeeee; width:15%; text-align:center;">카테고리</th>
-								<th style="background-color:#eeeeee; width:40%; text-align:center;">제목</th>
+								<th style="background-color:#eeeeee; text-align:center;">카테고리</th>
+								<th style="background-color:#eeeeee; text-align:center;">제목</th>
 								<th style="background-color:#eeeeee; text-align:center;">작성자</th>
 								<th style="background-color:#eeeeee; text-align:center;">조회</th>
 								<th style="background-color:#eeeeee; text-align:center;">추천</th>
@@ -110,9 +129,11 @@
 										<span style="color:red" class="glyphicon glyphicon-heart"></span>
 									</td>
 									<td>${board.loc }</td>
-									<td style="text-align:center;">
+									<td>
+									<div class="over">
 										<a href= "<c:url value='/userBoard/read/${board.seq }'/>
 										?pageNum=${currentPage}">${board.title}</a>&nbsp;&nbsp;<small style="color:#61210B;"><b>[ ${board.commcount } ]</b></small>
+									</div>
 									</td>
 									<td>${board.nickname }</td>
 									<td>${board.readcount }</td>
@@ -147,12 +168,21 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-info btn-sm" value="조회">
 				</form:form>
 				</div>
-				<table class="table text-center" style="border:1px solid #dddddd; color:#2A0A12; margin-top:10px;">
+				<table class="table text-center" style="border:1px solid #dddddd; color:#2A0A12; margin-top:10px; width:100%;">
+					<colgroup>
+							<col style="width:5%;">
+							<col style="width:15%;">
+							<col style="width:30%;">
+							<col style="width:20%;">
+							<col style="width:20%;">
+							<col style="width:5%;">
+							<col style="width:5%;">
+						</colgroup>
 					<thead>
 						<tr>
 							<th style="background-color:#eeeeee; text-align:center;">번호</th>
-							<th style="background-color:#eeeeee; width:15%; text-align:center;">카테고리</th>
-							<th style="background-color:#eeeeee; width:40%; text-align:center;">제목</th>
+							<th style="background-color:#eeeeee; text-align:center;">카테고리</th>
+							<th style="background-color:#eeeeee; text-align:center;">제목</th>
 							<th style="background-color:#eeeeee; text-align:center;">작성자</th>
 							<th style="background-color:#eeeeee; text-align:center;">작성일</th>
 							<th style="background-color:#eeeeee; text-align:center;">조회</th>
@@ -175,9 +205,11 @@
 										<c:set var="number" value="${number-1 }"/>
 									</td>
 									<td>${board.loc }</td>
-									<td style="text-align:center;">
+									<td>
+									<div class="over">
 										<a href= "<c:url value='/userBoard/read/${board.seq }'/>
 										?pageNum=${currentPage}">${board.title}</a>&nbsp;&nbsp;<small style="color:#61210B;"><b>[ ${board.commcount } ]</b></small>
+									</div>
 									</td>
 									<td>${board.nickname }</td>
 									<td>${sdf.format(board.regdate) }</td>

@@ -102,16 +102,16 @@
 			type : "post",
 			data : query,
 			success : function(data) {
-				if(data == 1) {
+				if(data == "1") {
 					$(".result .msg").text("ID가 중복입니다.");
 					$(".result .msg").attr("style", "color:#f00; font-size:13px;");   
 					$("#submit").attr("disabled", "disabled");
-				} else if(data == 0){
+				} else if(data == "0"){
 					$(".result .msg").text("이 ID는 사용 가능합니다.");
 					$(".result .msg").attr("style", "color:#00f; font-size:13px;");
 					$("#submit").removeAttr("disabled");
 				}else{
-					$(".result .msg").text("ID를 입력하세요");
+					$(".result .msg").text("ID는 4자 이상 12자 이하의 영소문자와 숫자여야 합니다.");
 					$(".result .msg").attr("style", "color:#f00; font-size:13px;");
 					$("#submit").attr("disabled", "disabled");
 				}

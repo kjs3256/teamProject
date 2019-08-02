@@ -57,15 +57,19 @@ public class RegisterController {
 	}
 	@ResponseBody
 	@RequestMapping(value="idCheck", method=RequestMethod.POST)
-	public int idCheck(HttpServletRequest req) throws Exception {
+	public String idCheck(HttpServletRequest req, @ModelAttribute("formData")RegisterCommand regCmd, Errors errors) throws Exception {
 		String id = req.getParameter("id");
 		MemberVO idCheck = memberService.memberConfirm(id);
-		int result = 0;
+		new IdCheckValidator().validate(regCmd, errors);
+		if(errors.hasErrors()) {
+			return "redirect:/register/regist";
+		}
+		String result = "0";
 		if(idCheck != null) {
-			result = 1;
+			result = "1";
 		}
 		if(id == "") {
-			result = -1;
+			result = "-1";
 		}
 		return result;
 	}
