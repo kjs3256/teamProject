@@ -94,9 +94,9 @@ body {
 						<c:forEach var="aList" items="${adminBoardList}" begin="0" end="2">
 							<div class="col-sm-6 col-md-4">
 								<div class="thumbnail">
-									<img
-										src="${pageContext.request.contextPath}/upload/${aList.filename}"
-										alt="..." style="height:200px; width:100%;">
+								<a href="${pageContext.request.contextPath }/adminBoard/read/${aList.seq}">
+									<img src="${pageContext.request.contextPath}/upload/${aList.filename}"
+										alt="..." style="height:200px; width:100%;"></a>
 									<div class="caption">
 										<h3>${aList.title}</h3>
 										<p>${aList.schedule1}</p>
