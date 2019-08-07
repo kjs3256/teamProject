@@ -19,4 +19,4 @@ Spring MVC / MyBatis 기반 부산 관광 사이트 "그가 거가?"입니다.
  
  Editor : Summernote
  
- Language : Java / JSP
+ Language : Java / JSP / JavaScript / Ajax / Jquery
